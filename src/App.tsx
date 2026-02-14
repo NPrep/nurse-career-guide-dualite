@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { Layout } from './components/layout/Layout';
 import { Home } from './pages/Home';
 // Career Paths removed
@@ -14,10 +14,15 @@ import { Courses } from './pages/Courses';
 import { Blog } from './pages/Blog';
 import { BlogDetail } from './pages/BlogDetail';
 import { PracticeHub } from './pages/practice/PracticeHub';
+import { RouterWrapper } from './next/RouterWrapper';
 
-function App() {
+type AppProps = {
+  initialPath?: string;
+};
+
+function App({ initialPath = '/' }: AppProps) {
   return (
-    <Router>
+    <RouterWrapper initialPath={initialPath}>
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -38,7 +43,7 @@ function App() {
           <Route path="/blog/:slug" element={<BlogDetail />} />
         </Routes>
       </Layout>
-    </Router>
+    </RouterWrapper>
   );
 }
 
