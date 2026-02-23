@@ -67,7 +67,7 @@ export function Header() {
 
       {/* Mobile Nav */}
       {isOpen && (
-        <div className="md:hidden bg-white border-t border-gray-100">
+        <div className="md:hidden nprep-mobile-drawer">
           <div className="pt-2 pb-3 space-y-1 px-4">
             {navItems.map((item) => (
               <Link
