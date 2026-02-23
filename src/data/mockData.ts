@@ -252,7 +252,7 @@ export const blogs = [
     slug: 'how-to-choose-nursing-career-path',
     excerpt: 'Confused between Clinical, Teaching, or Public Health? Here is a framework to decide.',
     category: 'Career Guidance',
-    date: 'Oct 12, 2023',
+    date: 'Updated for 2026',
   },
   {
     id: 2,
@@ -260,7 +260,7 @@ export const blogs = [
     slug: 'norcet-vs-rrb-which-exam-to-target',
     excerpt: 'A detailed comparison of salary, work-life balance, and exam difficulty.',
     category: 'Exam Guidance',
-    date: 'Nov 05, 2023',
+    date: 'Updated for 2026',
   },
   {
     id: 3,
@@ -268,7 +268,39 @@ export const blogs = [
     slug: 'how-to-use-pyqs-effectively',
     excerpt: 'Don’t just solve them. Analyze them. Here is the 3-step method.',
     category: 'Study Strategy',
-    date: 'Dec 10, 2023',
+    date: 'Updated for 2026',
+  },
+  {
+    id: 4,
+    title: 'Nursing Exam Salary Comparison: NORCET, RRB, ESIC, CHO',
+    slug: 'nursing-exam-salary-comparison',
+    excerpt: 'Compare in-hand salary, allowances, and long-term growth across major exam routes.',
+    category: 'Salary Insights',
+    date: 'Updated for 2026',
+  },
+  {
+    id: 5,
+    title: 'Working Abroad as an Indian Nurse: Requirements & Pathways',
+    slug: 'working-abroad-as-indian-nurse',
+    excerpt: 'Step-by-step guidance on IELTS/OET, registration exams, and country-wise options.',
+    category: 'Global Career',
+    date: 'Updated for 2026',
+  },
+  {
+    id: 6,
+    title: 'Nursing Specializations After Government Job: What Next?',
+    slug: 'nursing-specializations-after-government-job',
+    excerpt: 'Explore ICU, oncology, dialysis, and educator tracks after joining a govt role.',
+    category: 'Career Growth',
+    date: 'Updated for 2026',
+  },
+  {
+    id: 7,
+    title: 'How Working Nurses Can Prepare in 3-4 Hours Daily',
+    slug: 'working-nurse-3-hour-study-plan',
+    excerpt: 'A realistic weekly model for shift workers preparing alongside full-time duties.',
+    category: 'Study Strategy',
+    date: 'Updated for 2026',
   },
 ];
 

@@ -27,6 +27,7 @@ export function Blog() {
               <div className="flex items-center gap-4 mb-3 text-xs text-gray-500">
                 <span className="flex items-center gap-1"><Calendar className="h-3 w-3" /> {blog.date}</span>
                 <span className="flex items-center gap-1"><Clock className="h-3 w-3" /> {blog.readTime}</span>
+                <Badge className="bg-emerald-100 text-emerald-700">Updated for 2026</Badge>
               </div>
               <h2 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-teal-600 transition-colors line-clamp-2">{blog.title}</h2>
               <p className="text-gray-600 text-sm mb-4 flex-grow line-clamp-3">{blog.excerpt}</p>
