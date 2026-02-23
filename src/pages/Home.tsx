@@ -1,99 +1,144 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, BookOpen, FileText } from 'lucide-react';
+import {
+  ArrowRight,
+  BookOpen,
+  Briefcase,
+  CalendarCheck2,
+  Download,
+  FileText,
+  GraduationCap,
+  Map,
+  NotebookPen,
+} from 'lucide-react';
 import { Badge } from '../components/ui/Badge';
 import { blogs } from '../data/mockData';
-import { Map } from 'lucide-react'; // Re-imported Map here as it was used in removed section but needed for Key Modules
+
+const personaCards = [
+  {
+    title: "I'm a Nursing Student",
+    description: 'Build fundamentals, choose exam targets, and avoid study chaos.',
+    path: '/exams',
+    icon: GraduationCap,
+  },
+  {
+    title: "I'm a Graduate preparing for Govt Jobs",
+    description: 'Follow exam-wise timelines and high-yield revision roadmaps.',
+    path: '/roadmaps',
+    icon: Briefcase,
+  },
+  {
+    title: "I want to Practice Questions",
+    description: 'Use PYQs, daily challenges, and timed mocks to improve speed.',
+    path: '/practice',
+    icon: NotebookPen,
+  },
+  {
+    title: "I'm looking for Courses & Resources",
+    description: 'Compare free resources, books, and structured paid options.',
+    path: '/courses',
+    icon: BookOpen,
+  },
+];
 
 export function Home() {
   return (
     <div className="pb-12">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-b from-teal-50 to-white py-16 sm:py-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="bg-gradient-to-b from-teal-50 via-cyan-50/40 to-slate-50 py-16 sm:py-20">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <Badge className="mb-4">For Indian Nursing Students & Professionals</Badge>
           <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 tracking-tight mb-6">
             Nurse Career Guide – <span className="text-teal-600">Exams, Roadmaps & Practice</span>
           </h1>
-          <p className="text-lg text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
-            Navigating your nursing career shouldn't be confusing. Whether you are aiming for AIIMS NORCET, state government jobs, or exploring specialization, we provide the roadmap, exam details, and practice materials you need.
+          <p className="text-lg text-gray-600 mb-10 max-w-3xl mx-auto leading-relaxed">
+            Persona-first guidance for every nursing journey. Start as a student, graduate, or working nurse and get
+            the exact plan, exam pathway, and practice workflow you need.
           </p>
-          
-          {/* Start Here Grid */}
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8">
-            <h2 className="text-xl font-semibold text-gray-900 mb-6 text-left">Start Here: What describes you best?</h2>
+
+          <div className="surface-card p-6 sm:p-8 text-left">
+            <h2 className="text-xl font-semibold text-gray-900 mb-6">Start Here: What describes you best?</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {[
-                // Removed Career Path specific options
-                { label: "I'm a Nursing Student (BSc/GNM)", path: "/exams" },
-                { label: "I'm a Graduate preparing for Govt Jobs", path: "/roadmaps" },
-                { label: "I want to Practice Questions", path: "/pyqs" },
-                { label: "I'm looking for Courses", path: "/courses" },
-              ].map((item, idx) => (
-                <Link 
-                  key={idx} 
-                  to={item.path}
-                  className="flex items-center justify-between p-4 rounded-xl border border-gray-200 hover:border-teal-300 hover:bg-teal-50 transition-all group text-left"
-                >
-                  <span className="font-medium text-gray-700 group-hover:text-teal-800">{item.label}</span>
-                  <ArrowRight className="h-4 w-4 text-gray-400 group-hover:text-teal-600" />
-                </Link>
-              ))}
+              {personaCards.map((item) => {
+                const Icon = item.icon;
+
+                return (
+                  <Link
+                    key={item.title}
+                    to={item.path}
+                    className="group rounded-xl border border-gray-200 bg-white p-5 transition-all duration-200 hover:-translate-y-1 hover:border-[var(--primary)] hover:shadow-md"
+                  >
+                    <div className="flex items-start justify-between gap-4">
+                      <div>
+                        <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-teal-50 text-teal-700">
+                          <Icon className="h-5 w-5" />
+                        </div>
+                        <h3 className="font-semibold text-gray-900 mb-1">{item.title}</h3>
+                        <p className="text-sm text-gray-600 leading-relaxed">{item.description}</p>
+                      </div>
+                      <ArrowRight className="h-5 w-5 shrink-0 text-gray-400 transition-transform group-hover:translate-x-1 group-hover:text-teal-600" />
+                    </div>
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Choose Your Goal Section Removed as it was purely Career Path based */}
-
-      {/* Key Modules */}
       <section className="py-12 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-8">Everything you need to succeed</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Roadmaps */}
-            <div className="bg-white p-6 rounded-xl border border-gray-200">
+            <div className="surface-card p-6">
               <div className="flex items-center gap-3 mb-4">
                 <Map className="h-6 w-6 text-teal-600" />
                 <h3 className="font-bold text-lg">Career Roadmaps</h3>
               </div>
-              <p className="text-gray-600 text-sm mb-4">Step-by-step study plans for 30, 60, and 90 days. Tailored for working nurses and full-time students.</p>
+              <p className="text-gray-600 text-sm mb-4">30/60-day visual plans with weekly checkpoints and PDF downloads.</p>
               <ul className="space-y-2 mb-6">
-                <li className="text-sm text-gray-500 flex items-center"><div className="w-1.5 h-1.5 bg-teal-400 rounded-full mr-2"></div>30-Day NORCET Plan</li>
-                <li className="text-sm text-gray-500 flex items-center"><div className="w-1.5 h-1.5 bg-teal-400 rounded-full mr-2"></div>Working Nurse Schedule</li>
+                <li className="text-sm text-gray-500 flex items-center"><div className="w-1.5 h-1.5 bg-teal-400 rounded-full mr-2"></div>30-Day NORCET Calendar</li>
+                <li className="text-sm text-gray-500 flex items-center"><div className="w-1.5 h-1.5 bg-teal-400 rounded-full mr-2"></div>Working Nurse Timeline</li>
               </ul>
               <Link to="/roadmaps" className="text-teal-600 text-sm font-medium hover:underline">Explore Roadmaps &rarr;</Link>
             </div>
 
-            {/* Exam Directory */}
-            <div className="bg-white p-6 rounded-xl border border-gray-200">
+            <div className="surface-card p-6">
               <div className="flex items-center gap-3 mb-4">
                 <FileText className="h-6 w-6 text-teal-600" />
                 <h3 className="font-bold text-lg">Exam Directory</h3>
               </div>
-              <p className="text-gray-600 text-sm mb-4">Detailed syllabus, eligibility, and patterns for all major Indian nursing exams.</p>
+              <p className="text-gray-600 text-sm mb-4">Compare difficulty, vacancies, and salary, then use the quick-fit quiz.</p>
               <ul className="space-y-2 mb-6">
                 <li className="text-sm text-gray-500 flex items-center"><div className="w-1.5 h-1.5 bg-teal-400 rounded-full mr-2"></div>AIIMS NORCET</li>
-                <li className="text-sm text-gray-500 flex items-center"><div className="w-1.5 h-1.5 bg-teal-400 rounded-full mr-2"></div>RRB & ESIC</li>
+                <li className="text-sm text-gray-500 flex items-center"><div className="w-1.5 h-1.5 bg-teal-400 rounded-full mr-2"></div>RRB, ESIC, DSSSB, State PSC</li>
               </ul>
               <Link to="/exams" className="text-teal-600 text-sm font-medium hover:underline">Browse Exams &rarr;</Link>
             </div>
 
-            {/* Practice Hub */}
-            <div className="bg-white p-6 rounded-xl border border-gray-200">
+            <div className="surface-card p-6">
               <div className="flex items-center gap-3 mb-4">
-                <BookOpen className="h-6 w-6 text-teal-600" />
+                <CalendarCheck2 className="h-6 w-6 text-teal-600" />
                 <h3 className="font-bold text-lg">Practice Hub</h3>
               </div>
-              <p className="text-gray-600 text-sm mb-4">Access previous year questions, subject-wise tests, and full-length mocks.</p>
+              <p className="text-gray-600 text-sm mb-4">Daily 10-question challenge, PYQs progress, subject-wise strengths.</p>
               <div className="flex flex-wrap gap-2 mb-6">
                 <Badge variant="secondary">PYQs</Badge>
                 <Badge variant="secondary">Subject Tests</Badge>
                 <Badge variant="secondary">Mocks</Badge>
               </div>
-              <p className="text-xs text-gray-400 mb-3">Some learners follow structured courses alongside practice. See the <Link to="/courses" className="text-teal-600 underline">Courses page</Link> for options.</p>
-              <Link to="/pyqs" className="text-teal-600 text-sm font-medium hover:underline">Start Practicing &rarr;</Link>
+              <p className="text-xs text-gray-400 mb-3">For structured prep with resources, check the <Link to="/courses" className="text-teal-600 underline">Resources page</Link>.</p>
+              <Link to="/practice" className="text-teal-600 text-sm font-medium hover:underline">Start Practicing &rarr;</Link>
             </div>
+          </div>
+
+          <div className="mt-8 surface-card p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+            <div>
+              <p className="font-semibold text-gray-900">Need offline study plans?</p>
+              <p className="text-sm text-gray-600">Download printable roadmap PDFs and track week-wise completion.</p>
+            </div>
+            <Link to="/roadmaps" className="inline-flex items-center gap-2 text-teal-700 font-medium">
+              Download Roadmaps <Download className="h-4 w-4" />
+            </Link>
           </div>
         </div>
       </section>
@@ -118,17 +163,16 @@ export function Home() {
           </Link>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {blogs.map((blog) => (
+          {blogs.slice(0, 6).map((blog) => (
             <Link key={blog.id} to={`/blog/${blog.slug}`} className="group">
               <div className="aspect-video bg-gray-100 rounded-xl mb-4 overflow-hidden">
-                 {/* Placeholder for blog image */}
-                 <div className="w-full h-full bg-teal-50 flex items-center justify-center text-teal-200">
-                    <FileText className="h-12 w-12" />
-                 </div>
+                <div className="w-full h-full bg-teal-50 flex items-center justify-center text-teal-200">
+                  <FileText className="h-12 w-12" />
+                </div>
               </div>
               <div className="flex items-center gap-2 mb-2">
                 <Badge variant="secondary">{blog.category}</Badge>
-                <span className="text-xs text-gray-500">{blog.date}</span>
+                {blog.date.includes('2026') ? <Badge className="bg-emerald-100 text-emerald-700">Updated for 2026</Badge> : null}
               </div>
               <h3 className="font-bold text-gray-900 mb-2 group-hover:text-teal-600 transition-colors">{blog.title}</h3>
               <p className="text-sm text-gray-500 line-clamp-2">{blog.excerpt}</p>
