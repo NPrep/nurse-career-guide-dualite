@@ -143,6 +143,27 @@ export function Home() {
         </div>
       </section>
 
+      <section className="py-12 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="nprep-testimonial-cta">
+            <h2 className="text-3xl font-semibold text-[var(--text-primary)]">Hear from real students</h2>
+            <a className="cta" href="https://nprep.in/blogs?filter=NORCET+Success+Story" target="_blank" rel="noopener noreferrer">
+              Read verified success stories on NPrep
+            </a>
+          </div>
+
+          <div className="mt-8 surface-card p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+            <div>
+              <p className="font-semibold text-gray-900">Need offline study plans?</p>
+              <p className="text-sm text-gray-600">Download printable roadmap PDFs and track week-wise completion.</p>
+            </div>
+            <Link to="/roadmaps" className="inline-flex items-center gap-2 text-teal-700 font-medium">
+              Download Roadmaps <Download className="h-4 w-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <section className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between mb-8">
           <h2 className="text-2xl font-bold text-gray-900">Latest Guidance</h2>
