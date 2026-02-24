@@ -1,9 +1,15 @@
 export const routes = [
   "/",
   "/blog",
-  "/blog/how-to-choose-nursing-career-path",
-  "/blog/how-to-use-pyqs-effectively",
-  "/blog/norcet-vs-rrb-which-exam-to-target",
+  "/blog/balance-work-and-study",
+  "/blog/best-books-nursing-exams",
+  "/blog/cho-career-path-guide",
+  "/blog/crack-aiims-norcet-strategy-guide",
+  "/blog/dsssb-nursing-officer-guide",
+  "/blog/esic-nursing-officer-guide",
+  "/blog/nursing-officer-salary-structure",
+  "/blog/rrb-staff-nurse-guide",
+  "/blog/top-nursing-specializations",
   "/courses",
   "/exams",
   "/exams/aiims-norcet",
@@ -23,5 +29,5 @@ export const routes = [
   "/roadmaps",
   "/roadmaps/30-day-norcet-plan",
   "/roadmaps/working-nurse-study-plan",
-  "/subject-wise-tests"
+  "/subject-wise-tests",
 ] as const;

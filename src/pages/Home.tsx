@@ -151,10 +151,19 @@ export function Home() {
               Read verified success stories on NPrep
             </a>
           </div>
+
+          <div className="mt-8 surface-card p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+            <div>
+              <p className="font-semibold text-gray-900">Need offline study plans?</p>
+              <p className="text-sm text-gray-600">Download printable roadmap PDFs and track week-wise completion.</p>
+            </div>
+            <Link to="/roadmaps" className="inline-flex items-center gap-2 text-teal-700 font-medium">
+              Download Roadmaps <Download className="h-4 w-4" />
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* Latest Updates / Blog */}
       <section className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between mb-8">
           <h2 className="text-2xl font-bold text-gray-900">Latest Guidance</h2>
