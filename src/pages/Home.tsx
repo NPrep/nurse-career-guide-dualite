@@ -2,129 +2,70 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const popularTopics = [
-  {
-    label: 'How to become a nurse',
-    description: 'Understand eligibility, course choices, licensing, and first-job pathways.',
-    href: '/how-to-become-a-nurse',
-  },
-  {
-    label: 'BSc Nursing vs GNM',
-    description: 'Compare duration, curriculum depth, career progression, and opportunities.',
-    href: '/bsc-nursing-vs-gnm',
-  },
-  {
-    label: 'Nursing career options',
-    description: 'Explore clinical, public-health, teaching, and administration tracks.',
-    href: '/nursing-career-options',
-  },
-  {
-    label: 'Scope of nursing in India',
-    description: 'See where demand is rising and how to plan long-term growth.',
-    href: '/scope-of-nursing-in-india',
-  },
+  { label: 'How to become a nurse', href: '/how-to-become-a-nurse' },
+  { label: 'BSc Nursing vs GNM', href: '/bsc-nursing-vs-gnm' },
+  { label: 'Nursing career options', href: '/nursing-career-options' },
+  { label: 'Scope of nursing in India', href: '/scope-of-nursing-in-india' },
 ];
 
-const learningItems = [
-  { title: 'Career paths', description: 'Map roles from entry-level to advanced nursing domains.' },
-  { title: 'Course details', description: 'Understand BSc Nursing, GNM, and related pathways clearly.' },
-  { title: 'Skills required', description: 'Identify core nursing competencies and practical workplace skills.' },
-  { title: 'Job opportunities', description: 'Evaluate government, private, and abroad job options.' },
-];
-
-const quickLinks = [
-  { label: 'Career', href: '/nursing-career-options' },
-  { label: 'Courses', href: '/bsc-nursing-course-details' },
-  { label: 'Jobs', href: '/government-jobs-after-nursing' },
-  { label: 'Skills', href: '/skills-required-for-nurse' },
-];
+const learningItems = ['Career paths', 'Course details', 'Skills required', 'Job opportunities'];
 
 export function Home() {
   return (
-    <div>
-      <section className="py-16 text-center bg-gray-50">
-        <div className="max-w-3xl mx-auto px-6">
-          <h1 className="text-4xl font-bold mb-4 text-gray-900">Nursing Career Guide in India</h1>
-          <p className="text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            Explore career opportunities, courses and future scope in the nursing profession.
+    <div className="py-12">
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 className="text-4xl font-bold text-gray-900 mb-5">Nursing Career Guide in India</h1>
+
+        <p className="text-lg text-gray-700 leading-relaxed mb-10">
+          Explore career opportunities, courses and future scope in the nursing profession.
+        </p>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Popular Topics</h2>
+          <ul className="list-disc pl-6 space-y-2 text-gray-700">
+            {popularTopics.map((topic) => (
+              <li key={topic.label}>
+                <Link to={topic.href} className="text-teal-700 hover:underline">
+                  {topic.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">What You Will Learn</h2>
+          <ul className="list-disc pl-6 space-y-2 text-gray-700">
+            {learningItems.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </section>
+
+        <section className="rounded-xl border border-teal-100 bg-teal-50 p-6 mb-10">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-3">Preparing for Government Nursing Exams</h2>
+          <p className="text-gray-700 mb-4">
+            Many nursing graduates prepare for government nursing officer exams for better career opportunities.
           </p>
           <a
             href="https://nprep.in"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block mt-6 px-6 py-3 bg-blue-600 text-white rounded-xl shadow hover:bg-blue-700"
+            className="inline-flex items-center rounded-md bg-teal-600 px-4 py-2 text-white font-medium hover:bg-teal-700"
           >
-            Start Now
+            Explore Preparation
           </a>
-        </div>
-      </section>
+        </section>
 
-      <section className="py-12 px-6 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-2xl font-semibold mt-8 mb-3 text-gray-900">Popular Topics</h2>
-          <div className="grid md:grid-cols-2 gap-6 mt-6">
-            {popularTopics.map((topic) => (
-              <Link
-                key={topic.label}
-                to={topic.href}
-                className="p-6 rounded-2xl shadow-md bg-white border border-gray-100 hover:-translate-y-0.5 transition-all"
-              >
-                <h3 className="text-xl font-semibold mb-2 text-gray-900">{topic.label}</h3>
-                <p className="text-gray-600 leading-relaxed">{topic.description}</p>
-              </Link>
-            ))}
+        <section className="rounded-xl border border-gray-200 p-6">
+          <h2 className="text-xl font-semibold text-gray-900 mb-4">Quick Navigation</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-teal-700 font-medium">
+            <Link to="/nursing-career-options" className="hover:underline">Career → /nursing-career-options</Link>
+            <Link to="/bsc-nursing-course-details" className="hover:underline">Courses → /bsc-nursing-course-details</Link>
+            <Link to="/government-jobs-after-nursing" className="hover:underline">Jobs → /government-jobs-after-nursing</Link>
+            <Link to="/skills-required-for-nurse" className="hover:underline">Skills → /skills-required-for-nurse</Link>
           </div>
-        </div>
-      </section>
-
-      <section className="py-12 px-6 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-2xl font-semibold mt-8 mb-3 text-gray-900">What You Will Learn</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
-            {learningItems.map((item) => (
-              <div key={item.title} className="p-6 rounded-2xl shadow-md bg-white">
-                <h3 className="text-xl font-semibold mb-2 text-gray-900">{item.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{item.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-12 px-6 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="p-6 rounded-2xl shadow-md bg-white border border-blue-100">
-            <h2 className="text-2xl font-semibold mt-8 mb-3 text-gray-900">Preparing for Government Nursing Exams</h2>
-            <p className="text-gray-600 leading-relaxed">
-              Many nursing graduates prepare for government nursing officer exams for better career opportunities.
-            </p>
-            <a
-              href="https://nprep.in"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block mt-6 px-6 py-3 bg-blue-600 text-white rounded-xl shadow hover:bg-blue-700"
-            >
-              Explore Preparation
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-12 px-6 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-2xl font-semibold mt-8 mb-3 text-gray-900">Quick Navigation</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
-            {quickLinks.map((item) => (
-              <Link
-                key={item.label}
-                to={item.href}
-                className="p-6 rounded-2xl shadow-md bg-white hover:-translate-y-0.5 transition-all"
-              >
-                <h3 className="text-xl font-semibold mb-2 text-gray-900">{item.label}</h3>
-                <p className="text-gray-600 leading-relaxed">Go to {item.href}</p>
-              </Link>
-            ))}
-          </div>
-        </div>
+        </section>
       </section>
     </div>
   );
