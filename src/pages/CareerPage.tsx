@@ -8,61 +8,92 @@ type CareerPageProps = {
 
 export function CareerPage({ page }: CareerPageProps) {
   return (
-    <div className="py-12">
-      <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-5">{page.title}</h1>
-        <p className="text-lg text-gray-700 leading-relaxed mb-8">{page.intro}</p>
+    <div>
+      <section className="py-16 text-center bg-gray-50">
+        <div className="max-w-3xl mx-auto px-6">
+          <h1 className="text-4xl font-bold mb-4 text-gray-900">{page.title}</h1>
+          <p className="text-gray-600 max-w-2xl mx-auto leading-relaxed">{page.intro}</p>
+        </div>
+      </section>
 
-        <div className="space-y-8">
-          {page.sections.map((section) => (
-            <section key={section.heading}>
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">{section.heading}</h2>
-              {section.type === 'paragraph' ? <p className="text-gray-700 leading-relaxed">{section.content}</p> : null}
+      {page.sections.map((section, index) => (
+        <section key={section.heading} className={`py-12 px-6 ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}>
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-2xl font-semibold mt-8 mb-3 text-gray-900">{section.heading}</h2>
 
-              {section.type === 'list' && section.items ? (
-                <ul className="list-disc pl-6 space-y-2 text-gray-700">
-                  {section.items.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              ) : null}
+            {section.type === 'paragraph' ? (
+              <div className="p-6 rounded-2xl shadow-md bg-white">
+                <p className="text-gray-600 leading-relaxed">{section.content}</p>
+              </div>
+            ) : null}
 
-              {section.type === 'ordered' && section.items ? (
-                <ol className="list-decimal pl-6 space-y-2 text-gray-700">
-                  {section.items.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ol>
-              ) : null}
-            </section>
-          ))}
+            {section.type === 'list' && section.items ? (
+              <div className="grid md:grid-cols-2 gap-6 mt-6">
+                {section.items.map((item) => (
+                  <div key={item} className="p-6 rounded-2xl shadow-md bg-white">
+                    <h3 className="text-xl font-semibold mb-2 text-gray-900">{item}</h3>
+                    <p className="text-gray-600 leading-relaxed">• Key nursing career insight and practical guidance for this area.</p>
+                  </div>
+                ))}
+              </div>
+            ) : null}
 
-          <section className="rounded-xl border border-teal-100 bg-teal-50 p-6">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-3">Preparing for Government Nursing Exams</h2>
-            <p className="text-gray-700 mb-4">
+            {section.type === 'ordered' && section.items ? (
+              <div className="grid md:grid-cols-2 gap-6 mt-6">
+                {section.items.map((item, itemIndex) => (
+                  <div key={item} className="p-6 rounded-2xl shadow-md bg-white">
+                    <h3 className="text-xl font-semibold mb-2 text-gray-900">Step {itemIndex + 1}</h3>
+                    <p className="text-gray-600 leading-relaxed">{item}</p>
+                  </div>
+                ))}
+              </div>
+            ) : null}
+          </div>
+        </section>
+      ))}
+
+      <section className="py-12 px-6 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="p-6 rounded-2xl shadow-md bg-white border border-blue-100">
+            <h2 className="text-2xl font-semibold mt-8 mb-3 text-gray-900">Preparing for Government Nursing Exams</h2>
+            <p className="text-gray-600 leading-relaxed">
               Many nursing graduates prepare for government nursing officer exams for better career opportunities.
             </p>
             <a
               href="https://nprep.in"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center rounded-md bg-teal-600 px-4 py-2 text-white font-medium hover:bg-teal-700"
+              className="inline-block mt-6 px-6 py-3 bg-blue-600 text-white rounded-xl shadow hover:bg-blue-700"
             >
-              Explore Preparation
+              Start Now
             </a>
-          </section>
-
-          <section className="rounded-xl border border-gray-200 p-6">
-            <h2 className="text-xl font-semibold text-gray-900 mb-4">Explore More Career Guidance</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-teal-700 font-medium">
-              <Link to="/nursing-career-options" className="hover:underline">Career → /nursing-career-options</Link>
-              <Link to="/bsc-nursing-course-details" className="hover:underline">Courses → /bsc-nursing-course-details</Link>
-              <Link to="/government-jobs-after-nursing" className="hover:underline">Jobs → /government-jobs-after-nursing</Link>
-              <Link to="/skills-required-for-nurse" className="hover:underline">Skills → /skills-required-for-nurse</Link>
-            </div>
-          </section>
+          </div>
         </div>
-      </article>
+      </section>
+
+      <section className="py-12 px-6 bg-gray-50">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-2xl font-semibold mt-8 mb-3 text-gray-900">Explore More Career Guidance</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
+            <Link to="/nursing-career-options" className="p-6 rounded-2xl shadow-md bg-white hover:-translate-y-0.5 transition-all">
+              <h3 className="text-xl font-semibold mb-2 text-gray-900">Career</h3>
+              <p className="text-gray-600 leading-relaxed">Go to /nursing-career-options</p>
+            </Link>
+            <Link to="/bsc-nursing-course-details" className="p-6 rounded-2xl shadow-md bg-white hover:-translate-y-0.5 transition-all">
+              <h3 className="text-xl font-semibold mb-2 text-gray-900">Courses</h3>
+              <p className="text-gray-600 leading-relaxed">Go to /bsc-nursing-course-details</p>
+            </Link>
+            <Link to="/government-jobs-after-nursing" className="p-6 rounded-2xl shadow-md bg-white hover:-translate-y-0.5 transition-all">
+              <h3 className="text-xl font-semibold mb-2 text-gray-900">Jobs</h3>
+              <p className="text-gray-600 leading-relaxed">Go to /government-jobs-after-nursing</p>
+            </Link>
+            <Link to="/skills-required-for-nurse" className="p-6 rounded-2xl shadow-md bg-white hover:-translate-y-0.5 transition-all">
+              <h3 className="text-xl font-semibold mb-2 text-gray-900">Skills</h3>
+              <p className="text-gray-600 leading-relaxed">Go to /skills-required-for-nurse</p>
+            </Link>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
