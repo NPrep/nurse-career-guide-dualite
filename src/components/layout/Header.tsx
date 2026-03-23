@@ -5,14 +5,12 @@ import { cn } from '../../lib/utils';
 
 const navItems = [
   { name: 'Home', path: '/' },
-  // { name: 'Career Paths', path: '/career-paths' }, // Removed
-  // { name: 'Exams', path: '/exams' }, // Removed from header, accessible via Home
-  { name: 'Roadmaps', path: '/roadmaps' },
-  { name: 'Subject Tests', path: '/subject-wise-tests' },
-  { name: 'PYQs', path: '/pyqs' },
-  { name: 'Mock Tests', path: '/mock-tests' },
-  { name: 'Courses', path: '/courses' },
-  { name: 'Blog', path: '/blog' },
+  { name: 'How to Become a Nurse', path: '/how-to-become-a-nurse' },
+  { name: 'Career Options', path: '/nursing-career-options' },
+  { name: 'BSc vs GNM', path: '/bsc-nursing-vs-gnm' },
+  { name: 'Skills', path: '/skills-required-for-nurse' },
+  { name: 'Jobs', path: '/government-jobs-after-nursing' },
+  { name: 'Future Scope', path: '/future-scope-of-nursing' },
 ];
 
 export function Header() {
@@ -34,17 +32,14 @@ export function Header() {
             </Link>
           </div>
 
-          {/* Desktop Nav */}
           <div className="hidden md:flex md:items-center md:space-x-6">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 to={item.path}
                 className={cn(
-                  "text-sm font-medium transition-colors duration-200",
-                  location.pathname === item.path
-                    ? "text-teal-700 font-semibold"
-                    : "text-gray-600 hover:text-teal-600"
+                  'text-sm font-medium transition-colors duration-200',
+                  location.pathname === item.path ? 'text-teal-700 font-semibold' : 'text-gray-600 hover:text-teal-600'
                 )}
               >
                 {item.name}
@@ -52,7 +47,6 @@ export function Header() {
             ))}
           </div>
 
-          {/* Mobile menu button */}
           <div className="flex items-center md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -65,7 +59,6 @@ export function Header() {
         </div>
       </div>
 
-      {/* Mobile Nav */}
       {isOpen && (
         <div className="md:hidden nprep-mobile-drawer">
           <div className="pt-2 pb-3 space-y-1 px-4">
@@ -75,10 +68,10 @@ export function Header() {
                 to={item.path}
                 onClick={() => setIsOpen(false)}
                 className={cn(
-                  "block px-3 py-2 rounded-md text-base font-medium",
+                  'block px-3 py-2 rounded-md text-base font-medium',
                   location.pathname === item.path
-                    ? "bg-teal-50 text-teal-700"
-                    : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                    ? 'bg-teal-50 text-teal-700'
+                    : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
                 )}
               >
                 {item.name}
