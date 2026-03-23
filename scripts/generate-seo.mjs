@@ -29,50 +29,11 @@ if (!domain) {
 const siteUrl = `https://${domain}`;
 const date = new Date().toISOString().split('T')[0];
 
-const readText = (relativePath) => {
-  const absolutePath = path.join(root, relativePath);
-  if (!fs.existsSync(absolutePath)) return '';
-  return fs.readFileSync(absolutePath, 'utf8');
-};
-
-const extractBlock = (text, exportName) => {
-  const blockMatch = text.match(new RegExp(`export const ${exportName} = \\[(.|\\n|\\r)*?\\n\\];`, 'm'));
-  return blockMatch?.[0] ?? '';
-};
-
-const collectSlugsFromBlock = (textBlock) => [...textBlock.matchAll(/slug:\s*['"]([^'"]+)['"]/g)].map((match) => match[1]);
-
-const staticRoutes = [
-  '/',
-  '/blog',
-  '/courses',
-  '/exams',
-  '/roadmaps',
-  '/practice',
-  '/pyqs',
-  '/subject-wise-tests',
-  '/mock-tests',
-];
-
-const mockDataText = readText('src/data/mockData.ts');
-const examsBlock = extractBlock(mockDataText, 'exams');
-const roadmapsBlock = extractBlock(mockDataText, 'roadmaps');
-const blogDataText = readText('src/data/blogData.ts');
-
-const examRoutes = collectSlugsFromBlock(examsBlock).map((slug) => `/exams/${slug}`);
-const roadmapRoutes = collectSlugsFromBlock(roadmapsBlock).map((slug) => `/roadmaps/${slug}`);
-const blogRoutes = collectSlugsFromBlock(blogDataText).map((slug) => `/blog/${slug}`);
-
-const routes = Array.from(new Set([...staticRoutes, ...examRoutes, ...roadmapRoutes, ...blogRoutes]))
-  .map((route) => {
-    const cleaned = route.trim();
-    if (cleaned !== '/' && cleaned.endsWith('/')) return cleaned.replace(/\/+$/, '');
-    return cleaned;
-  })
+const routesSource = fs.readFileSync(routesPath, 'utf8');
+const routes = [...routesSource.matchAll(/['"](\/[^'"]*)['"]/g)]
+  .map((match) => match[1])
+  .filter((value, index, array) => array.indexOf(value) === index)
   .sort();
-
-const routesFileContent = ['export const routes = [', ...routes.map((route) => `  "${route}",`), '] as const;', ''].join('\n');
-fs.writeFileSync(routesPath, routesFileContent, 'utf8');
 
 const toUrl = (route) => (route === '/' ? `${siteUrl}/` : `${siteUrl}${route}/`);
 const priorityFor = (route) => {
